@@ -7,7 +7,7 @@
 //
 // No framework. No runtime JavaScript ships to the browser. No web fonts.
 
-import { readFileSync, writeFileSync, copyFileSync, mkdirSync, statSync } from "node:fs";
+import { readFileSync, writeFileSync, copyFileSync, mkdirSync, rmSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -427,6 +427,8 @@ ${resumeHtml}
 /* ---- self-measure to a fixed point: the printed size IS the file size ----
    The size string lives inside the file, so substituting it changes the byte
    count. Iterate until the figure stops moving (converges in 1–2 passes). */
+// Start clean so a removed source file can't linger in dist/ across local builds.
+rmSync(DIST, { recursive: true, force: true });
 mkdirSync(DIST, { recursive: true });
 const outFile = join(DIST, "index.html");
 const fmt = (s) => (Buffer.byteLength(html.replace("__PAGE_SIZE__", s), "utf8") / 1024).toFixed(1) + " KB";
@@ -445,9 +447,8 @@ copyFileSync(join(ROOT, DOCX), join(DIST, DOCX));
 copyFileSync(join(ROOT, "og.png"), join(DIST, "og.png"));
 writeFileSync(join(DIST, ".nojekyll"), "");
 
-// Apex-domain root files: the CNAME Pages needs, plus the 404 short-link
-// redirector that predates this site (ahmed.bio/blog -> thesabbir.com).
-const ROOT_FILES = ["CNAME", "404.html", "redirector.js", "redirectorDB.js"];
+// Apex-domain root files: the CNAME Pages needs, plus the custom 404.
+const ROOT_FILES = ["CNAME", "404.html"];
 for (const f of ROOT_FILES) copyFileSync(join(ROOT, f), join(DIST, f));
 
 console.log(`built dist/index.html — colophon says ${kb}, file is ${trueBytes} bytes`);
