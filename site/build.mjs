@@ -445,9 +445,8 @@ copyFileSync(join(ROOT, DOCX), join(DIST, DOCX));
 copyFileSync(join(ROOT, "og.png"), join(DIST, "og.png"));
 writeFileSync(join(DIST, ".nojekyll"), "");
 
-// Apex-domain root files: the CNAME Pages needs, plus the 404 short-link
-// redirector that predates this site (ahmed.bio/blog -> thesabbir.com).
-const ROOT_FILES = ["CNAME", "404.html", "redirector.js", "redirectorDB.js"];
+// Apex-domain root files: the CNAME Pages needs, plus the custom 404.
+const ROOT_FILES = ["CNAME", "404.html"];
 for (const f of ROOT_FILES) copyFileSync(join(ROOT, f), join(DIST, f));
 
 console.log(`built dist/index.html — colophon says ${kb}, file is ${trueBytes} bytes`);

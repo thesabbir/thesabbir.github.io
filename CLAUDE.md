@@ -5,14 +5,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this repo is
 
 The GitHub **user page** repo (`thesabbir.github.io`), serving the personal-brand site at the
-apex domain **ahmed.bio** (`CNAME`). Two things live here:
+apex domain **ahmed.bio** (`CNAME`).
 
-1. **The site** — `site/build.mjs` renders `dist/` from the résumé Markdown. Hand-built,
-   zero-dependency, framework-free, no web fonts, no client JS. That austerity *is* the brand:
-   don't introduce React/bundlers/CDN assets.
-2. **A short-link redirector** — `404.html` loads `redirector.js` + `redirectorDB.js`, which map
-   a path to an external URL (`ahmed.bio/blog` → `thesabbir.com`). Add links by editing the
-   `redirectorDB` object.
+`site/build.mjs` renders `dist/` from the résumé Markdown. Hand-built, zero-dependency,
+framework-free, no web fonts, **no client JS at all**. That austerity *is* the brand: don't
+introduce React/bundlers/CDN assets. The repo previously carried a client-side short-link
+redirector (`redirector.js` + `redirectorDB.js`, wired into `404.html`); it was removed, and
+`404.html` is now a static page. Short links, if wanted again, belong at the DNS/CDN layer.
 
 The site source is **mirrored from the `resume` repo** (`../resume`), which is the upstream for
 `site/build.mjs`, `site/og.html`, `og.png`, and the four `Sabbir_Ahmed_Resume_2026.*` files. Edits
