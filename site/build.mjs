@@ -18,7 +18,9 @@ const DIST = join(ROOT, "dist");
    Editable content. This is the curated voice of the site.
    Keep it strictly grounded in fact (the résumé, and Kichu's own public copy
    on kichu.dev). This is the founder's own page; an invented specific would
-   betray the brand it sells.
+   betray the brand it sells. Nothing from Kichu's private materials (raise,
+   pricing, runway, roadmap, traction numbers, customers, architecture or
+   cost structure) belongs here.
 ---------------------------------------------------------------------------- */
 
 const SITE_URL = "https://ahmed.bio/";
@@ -26,15 +28,15 @@ const KICHU_URL = "https://kichu.dev/";
 
 const content = {
   name: "Sabbir Ahmed",
-  tagline: "Founder, Kichu",
+  tagline: "Founder & CEO, Kichu",
   eyebrow: "Technical founder · Dhaka, Bangladesh",
   headline:
-    "I take companies from zero. This time, with AI&nbsp;agents instead of a&nbsp;team.",
-  intro: `Founder of <a class="u" href="${KICHU_URL}">Kichu</a>: commerce and finance for merchants, automated. Before it, ten years at the start of things: a founding engineer through an acquisition, a CTO seat, and an early engineer at a crypto exchange that now serves millions, for companies in Norway, the US, the UAE and Finland.`,
+    "I build the foundations companies grow&nbsp;on. Kichu is my&nbsp;own.",
+  intro: `Founder and CEO of <a class="u" href="${KICHU_URL}">Kichu</a>, commerce and finance for small businesses, automated, and built by a small team and a fleet of AI agents. Before it I held nearly every seat in a tech company, from engineer to co-founder and CTO, for companies in Norway, the US, the UAE and Finland.`,
   description:
-    "Technical founder of Kichu. Ten years taking companies from zero; now building one with AI agents instead of a team.",
+    "I build the foundations companies grow on. Founder and CEO of Kichu, built by a small team and a fleet of AI agents; before it, co-founder and CTO, founding engineer through an acquisition, and early engineer at an exchange that now serves millions.",
   contactLine:
-    "If you're building in commerce, thinking hard about agents, or want to talk about Kichu, email is the surest way to reach me.",
+    "If you want to build Kichu with us, partner with it, or talk shop about commerce and agents, email is the surest way to reach me.",
   links: [
     { href: "mailto:sabbirahmed8361@gmail.com", text: "sabbirahmed8361@gmail.com" },
     { href: KICHU_URL, text: "kichu.dev" },
@@ -45,15 +47,15 @@ const content = {
 
   // "Now": the company. Mirrors kichu.dev's own pitch so the two never disagree.
   now: [
-    "Kichu puts a merchant's storefront, orders, payments, couriers and books in one place, with the infrastructure and the automation underneath. One tool where there used to be ten, at a fraction of what the ten cost.",
-    "Under the hood it's built to be trusted: an event-sourced Rust core where every action, by a person, an agent or the system, lands on a ledger; hard isolation between merchants; a phone-first app for running the shop. Agents act for a merchant only within budgets the merchant approves.",
+    "Kichu puts a small business's storefront, orders, payments, couriers and books in one place, with the automation underneath. One tool where there used to be ten, at a fraction of what the ten cost.",
+    "I lead it with two co-founders, from Dhaka. It's live in production.",
   ],
 
   // "How I build": the founder's edge. Grounded only in known facts.
   method: [
-    "For ten years I shipped products by writing the code, usually as one of the first engineers in the room. Kichu is a one-person company shipping at the scope of a team, because AI agents write most of the code. The hard part was never the prompting. It's the judgment.",
-    "Agents are fast, tireless and non-deterministic. Pointed at a real product they produce volume; left unsupervised they produce plausible nonsense. My job is the difference: deciding what to build, setting the rules the agents work under, and standing up the checks and tests that catch a regression before a merchant would. The agents do the volume. I own the correctness.",
-    "One campaign shipped a ~30,000-line change across a chain of 22 branches. That leverage is real, but it only holds when someone with taste is holding the rules. That part is mine.",
+    "I've held nearly every seat in a tech company: engineer, team lead, founding engineer, consultant, co-founder and CTO, and now CEO. Every one of them taught the same lesson. The companies that grow are the ones whose foundations hold, and that's the part I build: the system underneath that stays fast and correct while everything on top of it changes.",
+    "AI changes the economics, not the lesson. At Kichu the model writes most of the code, so a small team ships at the scope of a much bigger one. But cheap software is not the same as the right software; a wrong ask now ships faster and hurts more. So the foundation comes first: the rules the agents work under, and the automated checks that catch a regression before a merchant would. The agents write it. We own the correctness.",
+    "One campaign shipped a ~30,000-line change across a chain of 22 branches. That leverage only holds on a foundation built to refuse the wrong thing.",
   ],
 
   // Track record: outcomes, not a logo wall.
@@ -66,9 +68,9 @@ const content = {
     },
     {
       org: "Ngaze",
-      role: "CTO",
+      role: "Co-founder & CTO",
       when: "2023",
-      note: "Founding technical leader of a multi-tenant STEM-learning platform. Took it from idea to live with two partners, owned the stack, the technical strategy and hiring, and shipped an LLM course-authoring tool before LLM features were mainstream.",
+      note: "Co-founded a multi-tenant STEM-learning platform and led its technology. Took it from idea to live with two partners, owned the stack, the technical strategy and hiring, and shipped an LLM course-authoring tool before LLM features were mainstream.",
     },
     {
       org: "Fasset",
@@ -119,7 +121,7 @@ const favicon =
   ).replace(/%23/g, "%23");
 
 const title = `${content.name} — ${content.tagline}`;
-const ogLine = "I take companies from zero. This time, with AI agents instead of a team.";
+const ogLine = "I build the foundations companies grow on. Kichu is my own.";
 
 const html = `<!doctype html>
 <html lang="en">
@@ -299,7 +301,7 @@ const html = `<!doctype html>
         <h3>Kichu</h3>
         <span class="venture-when">2026 — Present</span>
       </div>
-      <div class="venture-role">Founder · commerce × finance, automated</div>
+      <div class="venture-role">Founder &amp; CEO · commerce × finance, automated</div>
       <div class="prose">
         ${paras(content.now)}
       </div>

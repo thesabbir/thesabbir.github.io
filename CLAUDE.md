@@ -20,7 +20,13 @@ by design. The résumé (Markdown/HTML/PDF/DOCX) lives only in `resume` now; edi
 Content rule: every claim must be grounded in fact — the résumé, or Kichu's own public copy on
 kichu.dev (its landing strings live in the kichu repo's `apps/site/src/i18n/ui.ts`). Describe Kichu
 the way kichu.dev does, so the two never disagree. Never upgrade a title (Cookups was *founding
-engineer*, not founder).
+engineer*, not founder; Ngaze was *co-founder & CTO*).
+
+**Confidentiality.** Kichu is a three-person founding team; Sabbir is Founder & CEO. Nothing from
+Kichu's private materials (pitch or partner decks, the kichu repo's internal docs) goes on this
+site: no raise, valuation, pricing, runway, roadmap, traction numbers, customer names, or
+architecture/cost details. Don't name the co-founders without asking. Don't invite investment
+publicly ("back us", "we're raising"): that can count as general solicitation for a private round.
 
 `site/og.html` is the source for `og.png` (regeneration command in its header comment).
 
