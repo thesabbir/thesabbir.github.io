@@ -30,13 +30,12 @@ const content = {
   name: "Sabbir Ahmed",
   tagline: "Founder & CEO, Kichu",
   eyebrow: "Technical founder · Dhaka, Bangladesh",
-  headline:
-    "I build the foundations companies grow&nbsp;on. Kichu is my&nbsp;own.",
-  intro: `Founder and CEO of <a class="u" href="${KICHU_URL}">Kichu</a>, commerce and finance for small businesses, automated, and built by a small team and a fleet of AI agents. Before it, 15 years in tech, from freelancing as a teenager to co-founder and CTO, for companies in Norway, the US, the UAE and Finland.`,
+  headline: "I build the part of a company nobody&nbsp;sees.",
+  intro: `These days, the company is my own. <a class="u" href="${KICHU_URL}">Kichu</a> gives a small business one place to run everything it sells, ships and gets paid for, and I'm building it with two co-founders in Dhaka. Before that I spent fifteen years building mostly other people's startups, beginning with freelance jobs I took as a teenager.`,
   description:
-    "I build the foundations companies grow on. Founder and CEO of Kichu, built by a small team and a fleet of AI agents; before it, 15 years in tech: co-founder and CTO, founding engineer through an acquisition, and early engineer at an exchange that now serves millions.",
+    "Sabbir Ahmed builds the part of a company nobody sees. Founder and CEO of Kichu, after fifteen years building startups, from freelancing as a teenager to co-founder and CTO.",
   contactLine:
-    "If you want to build Kichu with us, partner with it, or talk shop about commerce and agents, email is the surest way to reach me.",
+    "Email is the best way to reach me. Write if you'd like to build Kichu with us or work alongside it, or if you just want to compare notes on commerce and AI agents.",
   links: [
     { href: "mailto:sabbirahmed8361@gmail.com", text: "sabbirahmed8361@gmail.com" },
     { href: KICHU_URL, text: "kichu.dev" },
@@ -45,52 +44,53 @@ const content = {
     { href: "https://github.com/thesabbir", text: "github.com/thesabbir" },
   ],
 
-  // "Now": the company. Mirrors kichu.dev's own pitch so the two never disagree.
+  // "Now": the company, in kichu.dev's public terms only.
   now: [
-    "Kichu puts a small business's storefront, orders, payments, couriers and books in one place, with the automation underneath. One tool where there used to be ten, at a fraction of what the ten cost.",
-    "I lead it with two co-founders, from Dhaka. It's live in production.",
+    "Most small businesses run on a pile of tools that don't talk to each other, held together by an owner who stays up past midnight making the numbers agree. Kichu replaces the pile. The shop, the orders, the payments, the couriers and the books live in one place, and the software does the chasing.",
+    "It costs a fraction of what the pile did, and it's already live.",
   ],
 
-  // "How I build": the founder's edge. Grounded only in known facts.
+  // "How I work": the founder's edge. Grounded only in known facts.
   method: [
-    "I've held nearly every seat in a tech company: teenage freelancer, engineer, team lead, founding engineer, consultant, co-founder and CTO, and now CEO. Every one of them taught the same lesson. The companies that grow are the ones whose foundations hold, and that's the part I build: the system underneath that stays fast and correct while everything on top of it changes. It takes both ends at once, the big picture of where the company is going and the small details that decide whether it holds on the way.",
-    "AI changes the economics, not the lesson. At Kichu the model writes most of the code, so a small team ships at the scope of a much bigger one. But cheap software is not the same as the right software; a wrong ask now ships faster and hurts more. So the foundation comes first: the rules the agents work under, and the automated checks that catch a regression before a merchant would. The agents write it. We own the correctness.",
-    "One campaign shipped a ~30,000-line change across a chain of 22 branches. That leverage only holds on a foundation built to refuse the wrong thing.",
+    "I've done most of the jobs a tech company has. I freelanced as a teenager, then wrote code for other people, led teams, was the first engineer through the door more than once, consulted, and co-founded a company as its CTO. The lesson that stuck isn't a glamorous one: companies stall on their foundations. The parts nobody looks at decide how fast everyone else can move, and they decide it quietly, long before anyone notices.",
+    "Getting that right means holding two things at once. One is the big picture, where the company is actually going. The other is the small detail that will break on the way there. Most people are good at one of them. I've spent fifteen years learning to do both.",
+    "AI hasn't changed this. It has made it more urgent. At Kichu, AI agents write most of the code, which means a small team can build what used to take a big one. It also means a bad idea can be built in an afternoon. So our job is the old job: deciding what's worth building, and making sure it's right. We write the rules the agents work under, and the tests that catch their mistakes before a merchant does.",
+    "The largest single change so far ran to about 30,000 lines across 22 branches. The tests caught what the agents got wrong, and it shipped.",
   ],
 
-  // "Off the clock": the person, in the founder's own words, kept short.
+  // "Off the clock": the person, from the founder's own bio.
   offClock:
-    "Away from work I'm the same person: hooked on problems, always learning something new, and happiest when I've explored one rigorously instead of guessing. I build communities, keep a steady pile of pet projects, and spend as much time as I can close to nature, with indie music on and one eye on pop culture.",
+    "Give me a free afternoon and I'll go looking for a hard problem. Usually that means whatever I'm learning that month, or one of the pet projects that may never ship, and I'd rather take something apart properly than guess at how it works. I tend to end up building a community around whatever I care about. When I can, I'm outdoors. There's usually indie music playing, and I know more about pop culture than a founder strictly needs to.",
 
   // Track record: outcomes, not a logo wall.
   work: [
     {
       org: "Cefalo",
-      role: "Staff / Lead Engineer, for Norwegian SaaS companies",
+      role: "Staff engineer, consulting for Norwegian SaaS companies",
       when: "2023 — 2026",
-      note: "Helped a multi-tenant subscription platform grow from ~2k to 300k+ users across 10–15 tenants: the growth features, and the scaling calls that kept it fast on the way.",
+      note: "A subscription platform I worked on went from one customer and about 2,000 users to more than 300,000 users across 10–15 businesses. I built growth features for it and made the scaling calls that kept it quick. I also mentored two engineers, and other consultants brought me their hard design problems.",
     },
     {
       org: "Ngaze",
       role: "Co-founder & CTO",
       when: "2023",
-      note: "Co-founded a multi-tenant STEM-learning platform and led its technology. Took it from idea to live with two partners, owned the stack, the technical strategy and hiring, and shipped an LLM course-authoring tool before LLM features were mainstream.",
+      note: "A platform that teaches STEM through games and physics simulations. I owned the technology, the strategy and the hiring, and took it from an idea to a live product with two partners. I also built a tool that let people with no coding background write interactive lessons with an LLM, back when that was still unusual.",
     },
     {
       org: "Fasset",
       role: "Early engineer",
       when: "2021 — 2023",
-      note: "Joined a regulated crypto exchange while its infrastructure was struggling. Cut core-service cost 50%, shipped the P2P launch, and laid the foundation it now serves millions of users on.",
+      note: "I joined this regulated crypto exchange when its infrastructure was struggling. I cut what the core services cost to run in half, shipped its peer-to-peer launch, and laid the groundwork it later scaled on. It now serves millions of users.",
     },
     {
       org: "Cookups",
       role: "Founding engineer",
       when: "2017 — 2019",
-      note: "Built a home-cook marketplace across web, iOS and Android from one codebase, hired and led four engineers, and saw it through to acquisition by Chaldal.",
+      note: "A marketplace for home cooks. I built the customer app for web, iOS and Android from one codebase, plus the back office the business ran on. I hired and led four engineers, and saw it through to its acquisition by Chaldal.",
     },
   ],
   earlier:
-    "Earlier: Shohoz (brought food delivery to web, launched truck rental), BAIA Group (supply-chain tracing tuned for 2G/3G), and East West Media Group (real-time WebRTC messaging, led a team of six).",
+    "Before that: Shohoz, where I brought food delivery to the web and launched truck rental; BAIA Group, tracing supply chains over 2G connections; and East West Media Group, where I led six engineers building real-time video calls in the browser.",
 };
 
 /* ---------------------------------------------------------------------------- */
@@ -125,7 +125,7 @@ const favicon =
   ).replace(/%23/g, "%23");
 
 const title = `${content.name} — ${content.tagline}`;
-const ogLine = "I build the foundations companies grow on. Kichu is my own.";
+const ogLine = "I build the part of a company nobody sees.";
 
 const html = `<!doctype html>
 <html lang="en">
@@ -305,7 +305,7 @@ const html = `<!doctype html>
         <h3>Kichu</h3>
         <span class="venture-when">2026 — Present</span>
       </div>
-      <div class="venture-role">Founder &amp; CEO · commerce × finance, automated</div>
+      <div class="venture-role">Founder &amp; CEO</div>
       <div class="prose">
         ${paras(content.now)}
       </div>
@@ -316,7 +316,7 @@ const html = `<!doctype html>
   </section>
 
   <section id="method">
-    <h2 class="label">How I build</h2>
+    <h2 class="label">How I work</h2>
     <div class="prose">
         ${paras(content.method)}
     </div>
@@ -344,11 +344,11 @@ const html = `<!doctype html>
 
   <footer>
     <h2 class="label">Colophon</h2>
-    One hand-written HTML file with inline CSS. No framework, no runtime JavaScript,
-    no web fonts — it uses your system's own typefaces. Built by a zero-dependency
-    script; the document weighs <code>__PAGE_SIZE__</code> and renders in one request.
-    Dark mode follows your system.
-    Source on <a class="u" href="https://github.com/thesabbir/thesabbir.github.io">GitHub</a>.
+    This page is one hand-written HTML file. There's no framework, no JavaScript and
+    no web fonts, so it uses whatever typefaces your system already has. A small script
+    with no dependencies builds it; the result weighs <code>__PAGE_SIZE__</code> and
+    arrives in a single request. Dark mode follows your system. The source is on
+    <a class="u" href="https://github.com/thesabbir/thesabbir.github.io">GitHub</a>.
   </footer>
 
 </div>
