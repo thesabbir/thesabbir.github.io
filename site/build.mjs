@@ -31,9 +31,9 @@ const content = {
   tagline: "Founder & CEO, Kichu",
   eyebrow: "Technical founder · Dhaka, Bangladesh",
   headline: "Most of what I build, nobody sees. I like it that&nbsp;way.",
-  intro: `Right now that work is <a class="u" href="${KICHU_URL}">Kichu</a>, which a few of us are building in Dhaka so a small business can run everything it sells, ships and gets paid for from one place. Before it came fifteen years of building alongside other people, starting with freelance jobs I took as a teenager.`,
+  intro: `Right now that work is <a class="u" href="${KICHU_URL}">Kichu</a>. A few of us are building it, from Philadelphia and Dhaka, so a small business can run everything it sells, ships and gets paid for from one place. Before it came fifteen years of building alongside other people, starting with freelance jobs I took as a teenager.`,
   description:
-    "Sabbir Ahmed builds the quiet parts of companies. Founder and CEO of Kichu, a small team in Dhaka, after fifteen years building alongside others, from freelancing as a teenager to co-founder and CTO.",
+    "Sabbir Ahmed builds the quiet parts of companies. Founder and CEO of Kichu, a small team in Philadelphia and Dhaka, after fifteen years building alongside others, from freelancing as a teenager to co-founder and CTO.",
   contactLine:
     "Email is the best way to reach me. I'm glad to hear from anyone who'd like to build Kichu with us or work alongside it, or who just wants to talk about commerce, AI agents, or whatever they're curious about.",
   links: [
@@ -304,7 +304,7 @@ const html = `<!doctype html>
         <h3>Kichu</h3>
         <span class="venture-when">2026 — Present</span>
       </div>
-      <div class="venture-role">Founder &amp; CEO</div>
+      <div class="venture-role">Founder &amp; CEO · headquartered in Philadelphia</div>
       <div class="prose">
         ${paras(content.now)}
       </div>
