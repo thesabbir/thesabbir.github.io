@@ -1,156 +1,91 @@
 // Zero-dependency static-site build.
-// Reads the canonical Markdown résumé, renders the page, copies download
-// assets, and measures its own output so the colophon never lies.
+// Renders the founder page and measures its own output so the colophon
+// never lies.
 //
 // Run:  node site/build.mjs   (from repo root)
-// Out:  dist/index.html + résumé downloads
+// Out:  dist/index.html + og.png + the Pages root files
 //
 // No framework. No runtime JavaScript ships to the browser. No web fonts.
 
-import { readFileSync, writeFileSync, copyFileSync, mkdirSync, rmSync, statSync } from "node:fs";
+import { writeFileSync, copyFileSync, mkdirSync, rmSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = join(ROOT, "dist");
-const RESUME_MD = join(ROOT, "Sabbir_Ahmed_Resume_2026.md");
-const PDF = "Sabbir_Ahmed_Resume_2026.pdf";
-const DOCX = "Sabbir_Ahmed_Resume_2026.docx";
 
 /* ----------------------------------------------------------------------------
-   Editable content. The narrative below is the curated voice of the site.
-   Keep it strictly grounded in the résumé facts — this is the founder's own
-   page; invented specifics would betray the brand it sells.
+   Editable content. This is the curated voice of the site.
+   Keep it strictly grounded in fact (the résumé, and Kichu's own public copy
+   on kichu.dev). This is the founder's own page; an invented specific would
+   betray the brand it sells.
 ---------------------------------------------------------------------------- */
 
 const SITE_URL = "https://ahmed.bio/";
+const KICHU_URL = "https://kichu.dev/";
 
 const content = {
   name: "Sabbir Ahmed",
-  tagline: "Product Engineer · AI-Agent Orchestration",
-  eyebrow: "Product Engineer · Dhaka, Bangladesh · Remote",
+  tagline: "Founder, Kichu",
+  eyebrow: "Technical founder · Dhaka, Bangladesh",
   headline:
-    "I build products by conducting AI&nbsp;agents&nbsp;— and designing the systems that keep&nbsp;them&nbsp;honest.",
-  intro:
-    "Product engineer, 10+ years taking things zero-to-launch across Norway, the US, the UAE and Finland — a founding role through acquisition, a CTO seat, and now a stealth venture I'm building solo, at a scope that used to take a team.",
-  contactLine: "Email is the surest way to reach me.",
+    "I take companies from zero. This time, with AI&nbsp;agents instead of a&nbsp;team.",
+  intro: `Founder of <a class="u" href="${KICHU_URL}">Kichu</a>: commerce and finance for merchants, automated. Before it, ten years at the start of things: a founding engineer through an acquisition, a CTO seat, and an early engineer at a crypto exchange that now serves millions, for companies in Norway, the US, the UAE and Finland.`,
+  description:
+    "Technical founder of Kichu. Ten years taking companies from zero; now building one with AI agents instead of a team.",
+  contactLine:
+    "If you're building in commerce, thinking hard about agents, or want to talk about Kichu, email is the surest way to reach me.",
   links: [
-    { label: "Email", href: "mailto:sabbirahmed8361@gmail.com", text: "sabbirahmed8361@gmail.com" },
-    { label: "GitHub", href: "https://github.com/thesabbir", text: "github.com/thesabbir" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/sabbirahm", text: "linkedin.com/in/sabbirahm" },
-    { label: "X", href: "https://x.com/sabbbbbir", text: "x.com/sabbbbbir" },
+    { href: "mailto:sabbirahmed8361@gmail.com", text: "sabbirahmed8361@gmail.com" },
+    { href: KICHU_URL, text: "kichu.dev" },
+    { href: "https://x.com/sabbbbbir", text: "x.com/sabbbbbir" },
+    { href: "https://linkedin.com/in/sabbirahm", text: "linkedin.com/in/sabbirahm" },
+    { href: "https://github.com/thesabbir", text: "github.com/thesabbir" },
   ],
 
-  // "How I work" — the differentiator. Grounded only in known facts.
+  // "Now": the company. Mirrors kichu.dev's own pitch so the two never disagree.
+  now: [
+    "Kichu puts a merchant's storefront, orders, payments, couriers and books in one place, with the infrastructure and the automation underneath. One tool where there used to be ten, at a fraction of what the ten cost.",
+    "Under the hood it's built to be trusted: an event-sourced Rust core where every action, by a person, an agent or the system, lands on a ledger; hard isolation between merchants; a phone-first app for running the shop. Agents act for a merchant only within budgets the merchant approves.",
+  ],
+
+  // "How I build": the founder's edge. Grounded only in known facts.
   method: [
-    "For ten years I shipped products by writing the code. Now I ship them by directing AI agents to write it — and the hard part was never the prompting. It's the judgment.",
-    "Agents are fast, tireless, and non-deterministic. Pointed at a real product they produce volume; left unsupervised they produce plausible nonsense. My work is the system that makes the difference: deciding what to build, setting the rules the agents operate under, and standing up the automated checks and tests that catch regressions before I do. The agents do the volume. I own the correctness.",
-    "That means designing just enough system — and no more. For the venture I'm building now, that's an event-sourced backend, hard multi-tenant isolation, a Rust core and a TypeScript SDK: enough structure to stay fast and correct while many agents edit at once, without the architecture-for-its-own-sake that slows everything down.",
-    "One campaign shipped a ~30,000-line change across a chain of 22 branches — the kind of scope that used to need a team. The leverage is real. But it only holds when someone with taste is holding the rules. That's the part I'm good at.",
+    "For ten years I shipped products by writing the code, usually as one of the first engineers in the room. Kichu is a one-person company shipping at the scope of a team, because AI agents write most of the code. The hard part was never the prompting. It's the judgment.",
+    "Agents are fast, tireless and non-deterministic. Pointed at a real product they produce volume; left unsupervised they produce plausible nonsense. My job is the difference: deciding what to build, setting the rules the agents work under, and standing up the checks and tests that catch a regression before a merchant would. The agents do the volume. I own the correctness.",
+    "One campaign shipped a ~30,000-line change across a chain of 22 branches. That leverage is real, but it only holds when someone with taste is holding the rules. That part is mine.",
   ],
 
-  // Selected work — outcomes, not a logo wall.
+  // Track record: outcomes, not a logo wall.
   work: [
     {
-      org: "Stealth",
-      role: "Founder & Product Engineer",
-      when: "Feb 2026 — Present",
-      note: "Building a multi-tenant commerce product solo, by orchestrating fleets of AI coding agents under guardrails I designed to keep them honest.",
-    },
-    {
       org: "Cefalo",
-      role: "Staff / Lead Engineer (Norway clients)",
+      role: "Staff / Lead Engineer, for Norwegian SaaS companies",
       when: "2023 — 2026",
-      note: "Built growth features for a multi-tenant subscription platform and helped take it from ~2k to 300k+ users across 10–15 tenants.",
+      note: "Helped a multi-tenant subscription platform grow from ~2k to 300k+ users across 10–15 tenants: the growth features, and the scaling calls that kept it fast on the way.",
     },
     {
       org: "Ngaze",
-      role: "Lead Engineer / CTO",
+      role: "CTO",
       when: "2023",
-      note: "Shipped an LLM-powered course-authoring tool — non-engineers generating interactive lessons — and took the platform from idea to live with two partners, before LLM features were mainstream.",
+      note: "Founding technical leader of a multi-tenant STEM-learning platform. Took it from idea to live with two partners, owned the stack, the technical strategy and hiring, and shipped an LLM course-authoring tool before LLM features were mainstream.",
     },
     {
       org: "Fasset",
-      role: "Senior Software Engineer",
+      role: "Early engineer",
       when: "2021 — 2023",
-      note: "Rebuilt a struggling crypto-exchange backend: cut core-service cost 50% and laid the foundation it now scales millions of users on. Shipped the P2P launch.",
+      note: "Joined a regulated crypto exchange while its infrastructure was struggling. Cut core-service cost 50%, shipped the P2P launch, and laid the foundation it now serves millions of users on.",
     },
     {
       org: "Cookups",
-      role: "Founding / Lead Engineer",
+      role: "Founding engineer",
       when: "2017 — 2019",
-      note: "Built a home-cook marketplace across web, iOS and Android from one codebase; hired and led four engineers to acquisition by Chaldal.",
+      note: "Built a home-cook marketplace across web, iOS and Android from one codebase, hired and led four engineers, and saw it through to acquisition by Chaldal.",
     },
   ],
   earlier:
-    "Earlier — Shohoz (brought food delivery to web, launched truck rental), BAIA Group (supply-chain tracing tuned for 2G/3G), and East West Media Group (real-time WebRTC messaging, led a team of six).",
+    "Earlier: Shohoz (brought food delivery to web, launched truck rental), BAIA Group (supply-chain tracing tuned for 2G/3G), and East West Media Group (real-time WebRTC messaging, led a team of six).",
 };
-
-/* ----------------------------------------------------------------------------
-   Minimal, purpose-built Markdown → HTML for the résumé block.
-   Supports exactly the constructs this résumé uses: #/##/### headings,
-   **bold**, *italic*, and "- " unordered lists. Output is verified against
-   the actual file at build time — correctness over cleverness.
----------------------------------------------------------------------------- */
-
-const esc = (s) =>
-  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
-const inline = (s) =>
-  esc(s)
-    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\*(.+?)\*/g, "<em>$1</em>");
-
-function renderMarkdown(md) {
-  const lines = md.replace(/\r\n/g, "\n").split("\n");
-  const out = [];
-  let para = []; // buffered consecutive text lines
-  let list = []; // buffered consecutive bullets
-
-  const flushPara = () => {
-    if (para.length) {
-      out.push(`<p>${para.map(inline).join("<br>")}</p>`);
-      para = [];
-    }
-  };
-  const flushList = () => {
-    if (list.length) {
-      out.push(`<ul>${list.map((li) => `<li>${inline(li)}</li>`).join("")}</ul>`);
-      list = [];
-    }
-  };
-  const flush = () => {
-    flushPara();
-    flushList();
-  };
-
-  for (const raw of lines) {
-    const line = raw.trimEnd();
-    if (!line.trim()) {
-      flush();
-    } else if (line.startsWith("### ")) {
-      // Job titles — deepest level, nested under the résumé section <h2>.
-      flush();
-      out.push(`<h5>${inline(line.slice(4))}</h5>`);
-    } else if (line.startsWith("## ")) {
-      // CV parts: Summary, Experience, Technical Skills, Education.
-      flush();
-      out.push(`<h4>${inline(line.slice(3))}</h4>`);
-    } else if (line.startsWith("# ")) {
-      // The CV name — a sub-heading of the "Full résumé" section.
-      flush();
-      out.push(`<h3 class="cv-name">${inline(line.slice(2))}</h3>`);
-    } else if (line.startsWith("- ")) {
-      flushPara();
-      list.push(line.slice(2));
-    } else {
-      flushList();
-      para.push(line);
-    }
-  }
-  flush();
-  return out.join("\n");
-}
 
 /* ---------------------------------------------------------------------------- */
 
@@ -174,9 +109,7 @@ const workRows = content.work
   )
   .join("");
 
-const methodHtml = content.method.map((p) => `<p>${p}</p>`).join("\n        ");
-
-const resumeHtml = renderMarkdown(readFileSync(RESUME_MD, "utf8"));
+const paras = (ps) => ps.map((p) => `<p>${p}</p>`).join("\n        ");
 
 // Inline SVG favicon — a navy monogram. Zero extra request.
 const favicon =
@@ -185,17 +118,20 @@ const favicon =
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="%231E3A66"/><text x="32" y="44" font-family="Georgia,serif" font-size="38" fill="%23F6F3EC" text-anchor="middle">S</text></svg>`
   ).replace(/%23/g, "%23");
 
+const title = `${content.name} — ${content.tagline}`;
+const ogLine = "I take companies from zero. This time, with AI agents instead of a team.";
+
 const html = `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${content.name} — ${content.tagline}</title>
-<meta name="description" content="${content.name}. I build products by conducting AI agents — and designing the systems that keep them honest. 10+ years zero-to-launch.">
+<title>${title}</title>
+<meta name="description" content="${content.description}">
 <meta name="author" content="${content.name}">
 <link rel="canonical" href="${SITE_URL}">
-<meta property="og:title" content="${content.name} — Product Engineer">
-<meta property="og:description" content="I build products by conducting AI agents — and designing the systems that keep them honest.">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${ogLine}">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="${SITE_URL}">
 <meta property="og:image" content="${SITE_URL}og.png">
@@ -204,8 +140,8 @@ const html = `<!doctype html>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@sabbbbbir">
 <meta name="twitter:creator" content="@sabbbbbir">
-<meta name="twitter:title" content="${content.name} — Product Engineer">
-<meta name="twitter:description" content="I build products by conducting AI agents — and designing the systems that keep them honest.">
+<meta name="twitter:title" content="${title}">
+<meta name="twitter:description" content="${ogLine}">
 <meta name="twitter:image" content="${SITE_URL}og.png">
 <link rel="icon" href="${favicon}">
 <style>
@@ -232,7 +168,6 @@ const html = `<!doctype html>
   .wrap{max-width:var(--max); margin:0 auto; padding:0 clamp(1.25rem,5vw,2rem);
     counter-reset:section}
   a{color:inherit; text-decoration:none}
-  .mono{font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace}
   /* links: a faint resting underline that an accent line wipes over on hover */
   .u{background-image:linear-gradient(var(--accent),var(--accent));
     background-repeat:no-repeat; background-position:0 100%; background-size:0 1px;
@@ -245,7 +180,9 @@ const html = `<!doctype html>
     padding:clamp(1.5rem,5vw,2.4rem) 0 0; gap:1rem}
   .brand{font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
   nav{font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+  .brand, nav{white-space:nowrap}
   nav a{margin-left:1.1rem}
+  @media (max-width:400px){ nav a{margin-left:.6rem} .brand{letter-spacing:.1em} nav{letter-spacing:.08em} }
   nav a:hover{color:var(--ink)}
 
   /* ---- hero ---- */
@@ -259,7 +196,8 @@ const html = `<!doctype html>
     text-wrap:balance;
   }
   .intro{font-size:clamp(1.04rem,2.4vw,1.26rem); color:var(--muted);
-    max-width:42ch; margin:0 0 2rem; line-height:1.5; text-wrap:pretty}
+    max-width:44ch; margin:0 0 2rem; line-height:1.5; text-wrap:pretty}
+  .intro .u{color:var(--ink)}
   .links{font-size:.86rem; color:var(--muted)}
   .dot{margin:0 .55rem; opacity:.45}
 
@@ -275,7 +213,26 @@ const html = `<!doctype html>
   .prose p{margin:0 0 1.2rem; max-width:62ch; text-wrap:pretty}
   .prose p:last-child{margin-bottom:0}
 
-  /* ---- selected work ---- */
+  /* ---- now: the company card ---- */
+  .venture{border:1px solid var(--hair); border-radius:.9rem; background:var(--panel);
+    padding:clamp(1.4rem,4vw,2.2rem)}
+  .venture-head{display:flex; justify-content:space-between; align-items:baseline;
+    gap:1rem; margin:0 0 .3rem}
+  .venture h3{font-size:clamp(1.6rem,4vw,2rem); font-weight:560; letter-spacing:-.015em;
+    line-height:1.1; margin:0}
+  .venture-when{font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+    font-size:.72rem; letter-spacing:.06em; color:var(--muted); white-space:nowrap}
+  .venture-role{color:var(--accent); font-size:.92rem; margin:0 0 1.2rem}
+  .venture .prose p{font-size:.98rem; line-height:1.55}
+  .actions{display:flex; gap:.7rem; flex-wrap:wrap; margin:1.6rem 0 0}
+  .btn{display:inline-flex; align-items:center; gap:.5rem;
+    font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+    font-size:.74rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--bg); background:var(--accent); padding:.62rem 1rem; border-radius:.5rem;
+    transition:transform .18s ease, opacity .18s ease}
+  .btn:hover{transform:translateY(-1px); opacity:.92}
+
+  /* ---- track record ---- */
   ul.work-list{list-style:none; margin:0; padding:0}
   li.work{padding:1.15rem 0; border-bottom:1px solid var(--hair)}
   li.work:first-child{padding-top:0}
@@ -287,52 +244,14 @@ const html = `<!doctype html>
   .work-note{margin:0; color:var(--ink); max-width:60ch; font-size:.98rem; line-height:1.5}
   .earlier{color:var(--muted); font-size:.92rem; margin:1.3rem 0 0; max-width:60ch}
 
-  /* ---- résumé block ---- */
-  .actions{display:flex; gap:.7rem; flex-wrap:wrap; margin:0 0 2rem}
-  .btn{display:inline-flex; align-items:center; gap:.5rem;
-    font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
-    font-size:.74rem; letter-spacing:.08em; text-transform:uppercase;
-    color:var(--bg); background:var(--accent); padding:.62rem 1rem; border-radius:.5rem;
-    transition:transform .18s ease, opacity .18s ease}
-  .btn.ghost{background:transparent; color:var(--accent);
-    box-shadow:inset 0 0 0 1px var(--accent)}
-  .btn:hover{transform:translateY(-1px); opacity:.92}
-
-  /* full résumé tucked into an expander so the curated work leads */
-  details.cv-details{margin:0}
-  details.cv-details summary{list-style:none; cursor:pointer; display:inline-flex;
-    align-items:center; gap:.5rem; width:max-content;
-    font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
-    font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted);
-    transition:color .25s}
-  details.cv-details summary::-webkit-details-marker{display:none}
-  details.cv-details summary:hover{color:var(--ink)}
-  details.cv-details summary::after{content:"\\2193"; transition:transform .3s; opacity:.7}
-  details.cv-details[open] summary{margin-bottom:1.4rem}
-  details.cv-details[open] summary::after{transform:rotate(180deg)}
-
-  .cv{border:1px solid var(--hair); border-radius:.9rem; background:var(--panel);
-    padding:clamp(1.4rem,4vw,2.4rem); font-size:.92rem}
-  .cv .cv-name{font-size:1.5rem; font-weight:560; letter-spacing:-.01em; margin:0 0 .1rem}
-  .cv h4{font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
-    font-size:.7rem; font-weight:400; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);
-    margin:1.8rem 0 .7rem; padding-bottom:.4rem; border-bottom:1px solid var(--hair)}
-  .cv h5{font-size:1.05rem; font-weight:560; margin:1.25rem 0 .15rem}
-  .cv p{margin:.15rem 0 .5rem; color:var(--ink)}
-  .cv em{color:var(--muted); font-style:italic}
-  .cv ul{margin:.3rem 0 .8rem; padding-left:1.1rem}
-  .cv li{margin:0 0 .3rem; line-height:1.5}
-  .cv li::marker{color:var(--accent)}
-
   /* ---- contact + colophon ---- */
-  .contact-line{margin:0 0 1.1rem; max-width:48ch}
+  .contact-line{margin:0 0 1.1rem; max-width:52ch}
   .contact .links{font-size:1rem}
   footer{border-top:1px solid var(--hair); padding:2.4rem 0 4rem;
     color:var(--muted); font-size:.82rem; line-height:1.7}
   footer .label{color:var(--muted)}
   footer code{font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
     color:var(--ink); font-size:.92em}
-  footer code{color:var(--ink)}
 
   /* ---- the one motion moment: a quiet load reveal ---- */
   @media (prefers-reduced-motion: no-preference){
@@ -345,15 +264,11 @@ const html = `<!doctype html>
   }
   ::selection{background:var(--accent); color:var(--bg)}
 
-  /* ---- print: a clean fallback; the PDF download is the real artifact ---- */
   @media print{
     :root{--bg:#fff; --panel:#fff; --ink:#000; --muted:#333; --accent:#1a3e6f; --hair:#ccc}
-    header nav, .actions, .links, .contact-line, footer, .eyebrow{display:none}
+    header nav, .actions, footer{display:none}
     .reveal{opacity:1; transform:none; animation:none}
     section{border-top:1px solid #ccc; padding:1rem 0}
-    .cv{border:0; padding:0}
-    details.cv-details summary{display:none}
-    details.cv-details > .cv{display:block}  /* force the résumé open when printing */
     a{color:#000}
   }
 </style>
@@ -364,8 +279,8 @@ const html = `<!doctype html>
   <header>
     <span class="brand">${content.name}</span>
     <nav>
-      <a href="#work">Work</a>
-      <a href="#resume">Résumé</a>
+      <a href="#now">Now</a>
+      <a href="#record">Work</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -377,32 +292,35 @@ const html = `<!doctype html>
     <div class="links reveal d4">${linkRow}</div>
   </div>
 
+  <section id="now">
+    <h2 class="label">Now</h2>
+    <article class="venture">
+      <div class="venture-head">
+        <h3>Kichu</h3>
+        <span class="venture-when">2026 — Present</span>
+      </div>
+      <div class="venture-role">Founder · commerce × finance, automated</div>
+      <div class="prose">
+        ${paras(content.now)}
+      </div>
+      <div class="actions">
+        <a class="btn" href="${KICHU_URL}">Visit kichu.dev →</a>
+      </div>
+    </article>
+  </section>
+
   <section id="method">
-    <h2 class="label">How I work</h2>
+    <h2 class="label">How I build</h2>
     <div class="prose">
-        ${methodHtml}
+        ${paras(content.method)}
     </div>
   </section>
 
-  <section id="work">
-    <h2 class="label">Selected work</h2>
+  <section id="record">
+    <h2 class="label">Before Kichu</h2>
     <ul class="work-list">${workRows}
     </ul>
     <p class="earlier">${content.earlier}</p>
-  </section>
-
-  <section id="resume">
-    <h2 class="label">Full résumé</h2>
-    <div class="actions">
-      <a class="btn" href="${PDF}" download>Download PDF</a>
-      <a class="btn ghost" href="${DOCX}" download>Download DOCX</a>
-    </div>
-    <details class="cv-details">
-      <summary><span>Read the full résumé</span></summary>
-      <article class="cv">
-${resumeHtml}
-      </article>
-    </details>
   </section>
 
   <section id="contact" class="contact">
@@ -414,10 +332,10 @@ ${resumeHtml}
   <footer>
     <h2 class="label">Colophon</h2>
     One hand-written HTML file with inline CSS. No framework, no runtime JavaScript,
-    no web fonts — it uses your system's own typefaces. Built from a single Markdown
-    résumé by a zero-dependency script; the document weighs <code>__PAGE_SIZE__</code>
-    and renders in one request. Dark mode follows your system.
-    Source on <a class="u" href="https://github.com/thesabbir/resume">GitHub</a>.
+    no web fonts — it uses your system's own typefaces. Built by a zero-dependency
+    script; the document weighs <code>__PAGE_SIZE__</code> and renders in one request.
+    Dark mode follows your system.
+    Source on <a class="u" href="https://github.com/thesabbir/thesabbir.github.io">GitHub</a>.
   </footer>
 
 </div>
@@ -442,8 +360,6 @@ const finalHtml = html.replace("__PAGE_SIZE__", kb);
 writeFileSync(outFile, finalHtml);
 const trueBytes = statSync(outFile).size; // sanity: matches the printed figure
 
-copyFileSync(join(ROOT, PDF), join(DIST, PDF));
-copyFileSync(join(ROOT, DOCX), join(DIST, DOCX));
 copyFileSync(join(ROOT, "og.png"), join(DIST, "og.png"));
 writeFileSync(join(DIST, ".nojekyll"), "");
 
@@ -452,4 +368,4 @@ const ROOT_FILES = ["CNAME", "404.html"];
 for (const f of ROOT_FILES) copyFileSync(join(ROOT, f), join(DIST, f));
 
 console.log(`built dist/index.html — colophon says ${kb}, file is ${trueBytes} bytes`);
-console.log(`copied ${PDF}, ${DOCX}, og.png, ${ROOT_FILES.join(", ")}`);
+console.log(`copied og.png, ${ROOT_FILES.join(", ")}`);
