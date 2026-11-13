@@ -31,11 +31,11 @@ const content = {
   tagline: "Founder & CEO, Kichu",
   eyebrow: "Technical founder · Dhaka, Bangladesh",
   headline: "Most of what I build, nobody sees. I like it that&nbsp;way.",
-  intro: `Right now that work is <a class="u" href="${KICHU_URL}">Kichu</a>. A few of us are building it, from Philadelphia and Dhaka, so a small business can run everything it sells, ships and gets paid for from one place. Before it came fifteen years of building alongside other people, starting with freelance jobs I took as a teenager.`,
+  intro: `Right now that work is <a class="u" href="${KICHU_URL}">Kichu</a>. Until then it was fifteen years of building alongside other people, starting with freelance jobs I took as a teenager.`,
   description:
     "Sabbir Ahmed builds the quiet parts of companies. Founder and CEO of Kichu, a small team in Philadelphia and Dhaka, after fifteen years building alongside others, from freelancing as a teenager to co-founder and CTO.",
   contactLine:
-    "Email is the best way to reach me. I'm glad to hear from anyone who'd like to build Kichu with us or work alongside it, or who just wants to talk about commerce, AI agents, or whatever they're curious about.",
+    "Email is the best way to reach me. I'm glad to hear from anyone who'd like to build Kichu with us or work with it, or who just wants to talk about commerce, AI agents, or whatever they're curious about.",
   links: [
     { href: "mailto:sabbirahmed8361@gmail.com", text: "sabbirahmed8361@gmail.com" },
     { href: KICHU_URL, text: "kichu.dev" },
@@ -46,20 +46,20 @@ const content = {
 
   // "Now": the company, in kichu.dev's public terms only.
   now: [
-    "Most small businesses run on a pile of tools that don't talk to each other, held together by an owner who stays up past midnight making the numbers agree. Kichu replaces the pile. The shop, the orders, the payments, the couriers and the books live in one place, and the software does the chasing. We'd like that owner to have their evenings back.",
-    "It's live, and it costs a fraction of what the pile did.",
+    "Most small businesses run on a pile of tools that don't talk to each other, held together by an owner who stays up past midnight making the numbers agree. Kichu puts the shop, the orders, the payments, the couriers and the books in one place and lets the software do the chasing, for a fraction of what all those tools cost. We'd like that owner to have their evenings back.",
+    "We're headquartered in Philadelphia, and it's live.",
   ],
 
   // "How I work": the founder's edge. Grounded only in known facts.
   method: [
-    "Over fifteen years I've had a turn at most of the jobs in a tech company: freelancer, engineer, team lead, early hire, consultant, co-founder and CTO. Each taught me something, and most of it came down to one thing. What holds a company up is largely invisible. It's the plain, careful work underneath, and it decides how easily everyone else gets to do theirs.",
+    "I've had a turn at most of the jobs in a tech company, and each one taught me the same thing. What holds a company up is largely invisible. It's the plain, careful work underneath, and it decides how easily everyone else gets to do theirs.",
     "So I try to pay attention at two distances at once: to where things are going, and to the small detail that might give way on the way there. I'm still learning to do both well.",
-    "At Kichu, AI agents now write most of the code. That lets a small team do a great deal, and it makes it just as easy to build the wrong thing quickly. So most of our work is the part that hasn't changed: deciding what's worth building, giving the agents clear rules, and writing the tests that catch mistakes before a merchant meets them. Our largest change so far ran to about 30,000 lines across 22 branches, and the tests caught what the agents got wrong.",
+    "At Kichu, AI agents now write most of the code. That lets a small team do a great deal, and it makes it just as easy to build the wrong thing quickly. So most of our work is the part that hasn't changed: deciding what's worth building, giving the agents clear rules, and writing the tests that catch mistakes before a merchant meets them. Our largest change so far ran to about 30,000 lines across 22 branches, and they caught what the agents got wrong.",
   ],
 
   // "Off the clock": the person, from the founder's own bio. Quiet, not announced.
   offClock:
-    "I'm happiest when I'm giving something my full attention: a hard problem, a new subject, a pet project that may never ship. I like being around people who care about the same things, and more often than not I end up helping a community form around them. When I can, I'm outside. There's usually indie music on, and I keep a soft spot for pop culture. Mostly, I try to meet things as they are.",
+    "I'm happiest absorbed in something: a hard problem, a new subject, a pet project that may never ship. I like being around people who care about the same things, and more often than not I end up helping a community form around them. When I can, I'm outside. There's usually indie music on, and I keep a soft spot for pop culture. Mostly, I try to meet things as they are.",
 
   // Track record: outcomes, not a logo wall.
   work: [
@@ -89,7 +89,7 @@ const content = {
     },
   ],
   earlier:
-    "Before that: Shohoz, where I helped bring food delivery to the web and launch truck rental; BAIA Group, tracing supply chains over 2G connections; and East West Media Group, where I led a team of six building real-time video calls in the browser.",
+    "Earlier: Shohoz, where I helped bring food delivery to the web and launch truck rental; BAIA Group, tracing supply chains over 2G connections; and East West Media Group, where I led a team of six building real-time video calls in the browser.",
 };
 
 /* ---------------------------------------------------------------------------- */
@@ -294,7 +294,6 @@ const html = `<!doctype html>
     <div class="eyebrow reveal d1">${content.eyebrow}</div>
     <h1 class="reveal d2">${content.headline}</h1>
     <p class="intro reveal d3">${content.intro}</p>
-    <div class="links reveal d4">${linkRow}</div>
   </div>
 
   <section id="now">
@@ -304,7 +303,7 @@ const html = `<!doctype html>
         <h3>Kichu</h3>
         <span class="venture-when">2026 — Present</span>
       </div>
-      <div class="venture-role">Founder &amp; CEO · headquartered in Philadelphia</div>
+      <div class="venture-role">Founder &amp; CEO</div>
       <div class="prose">
         ${paras(content.now)}
       </div>
