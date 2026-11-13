@@ -32,9 +32,9 @@ const content = {
   eyebrow: "Technical founder · Dhaka, Bangladesh",
   headline:
     "I build the foundations companies grow&nbsp;on. Kichu is my&nbsp;own.",
-  intro: `Founder and CEO of <a class="u" href="${KICHU_URL}">Kichu</a>, commerce and finance for small businesses, automated, and built by a small team and a fleet of AI agents. Before it I held nearly every seat in a tech company, from engineer to co-founder and CTO, for companies in Norway, the US, the UAE and Finland.`,
+  intro: `Founder and CEO of <a class="u" href="${KICHU_URL}">Kichu</a>, commerce and finance for small businesses, automated, and built by a small team and a fleet of AI agents. Before it, 15 years in tech, from freelancing as a teenager to co-founder and CTO, for companies in Norway, the US, the UAE and Finland.`,
   description:
-    "I build the foundations companies grow on. Founder and CEO of Kichu, built by a small team and a fleet of AI agents; before it, co-founder and CTO, founding engineer through an acquisition, and early engineer at an exchange that now serves millions.",
+    "I build the foundations companies grow on. Founder and CEO of Kichu, built by a small team and a fleet of AI agents; before it, 15 years in tech: co-founder and CTO, founding engineer through an acquisition, and early engineer at an exchange that now serves millions.",
   contactLine:
     "If you want to build Kichu with us, partner with it, or talk shop about commerce and agents, email is the surest way to reach me.",
   links: [
@@ -53,7 +53,7 @@ const content = {
 
   // "How I build": the founder's edge. Grounded only in known facts.
   method: [
-    "I've held nearly every seat in a tech company: engineer, team lead, founding engineer, consultant, co-founder and CTO, and now CEO. Every one of them taught the same lesson. The companies that grow are the ones whose foundations hold, and that's the part I build: the system underneath that stays fast and correct while everything on top of it changes. It takes both ends at once, the big picture of where the company is going and the small details that decide whether it holds on the way.",
+    "I've held nearly every seat in a tech company: teenage freelancer, engineer, team lead, founding engineer, consultant, co-founder and CTO, and now CEO. Every one of them taught the same lesson. The companies that grow are the ones whose foundations hold, and that's the part I build: the system underneath that stays fast and correct while everything on top of it changes. It takes both ends at once, the big picture of where the company is going and the small details that decide whether it holds on the way.",
     "AI changes the economics, not the lesson. At Kichu the model writes most of the code, so a small team ships at the scope of a much bigger one. But cheap software is not the same as the right software; a wrong ask now ships faster and hurts more. So the foundation comes first: the rules the agents work under, and the automated checks that catch a regression before a merchant would. The agents write it. We own the correctness.",
     "One campaign shipped a ~30,000-line change across a chain of 22 branches. That leverage only holds on a foundation built to refuse the wrong thing.",
   ],
