@@ -53,10 +53,14 @@ const content = {
 
   // "How I build": the founder's edge. Grounded only in known facts.
   method: [
-    "I've held nearly every seat in a tech company: engineer, team lead, founding engineer, consultant, co-founder and CTO, and now CEO. Every one of them taught the same lesson. The companies that grow are the ones whose foundations hold, and that's the part I build: the system underneath that stays fast and correct while everything on top of it changes.",
+    "I've held nearly every seat in a tech company: engineer, team lead, founding engineer, consultant, co-founder and CTO, and now CEO. Every one of them taught the same lesson. The companies that grow are the ones whose foundations hold, and that's the part I build: the system underneath that stays fast and correct while everything on top of it changes. It takes both ends at once, the big picture of where the company is going and the small details that decide whether it holds on the way.",
     "AI changes the economics, not the lesson. At Kichu the model writes most of the code, so a small team ships at the scope of a much bigger one. But cheap software is not the same as the right software; a wrong ask now ships faster and hurts more. So the foundation comes first: the rules the agents work under, and the automated checks that catch a regression before a merchant would. The agents write it. We own the correctness.",
     "One campaign shipped a ~30,000-line change across a chain of 22 branches. That leverage only holds on a foundation built to refuse the wrong thing.",
   ],
+
+  // "Off the clock": the person, in the founder's own words, kept short.
+  offClock:
+    "Away from work I'm the same person: hooked on problems, always learning something new, and happiest when I've explored one rigorously instead of guessing. I build communities, keep a steady pile of pet projects, and spend as much time as I can close to nature, with indie music on and one eye on pop culture.",
 
   // Track record: outcomes, not a logo wall.
   work: [
@@ -323,6 +327,13 @@ const html = `<!doctype html>
     <ul class="work-list">${workRows}
     </ul>
     <p class="earlier">${content.earlier}</p>
+  </section>
+
+  <section id="off-clock">
+    <h2 class="label">Off the clock</h2>
+    <div class="prose">
+        <p>${content.offClock}</p>
+    </div>
   </section>
 
   <section id="contact" class="contact">
