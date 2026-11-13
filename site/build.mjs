@@ -39,7 +39,7 @@ const content = {
   links: [
     { href: "mailto:sabbirahmed8361@gmail.com", text: "sabbirahmed8361@gmail.com" },
     { href: KICHU_URL, text: "kichu.dev" },
-    { href: "https://x.com/sabbbbbir", text: "x.com/sabbbbbir" },
+    { href: "https://x.com/expectcuriously", text: "x.com/expectcuriously" },
     { href: "https://linkedin.com/in/sabbirahm", text: "linkedin.com/in/sabbirahm" },
     { href: "https://github.com/thesabbir", text: "github.com/thesabbir" },
   ],
@@ -144,8 +144,8 @@ const html = `<!doctype html>
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@sabbbbbir">
-<meta name="twitter:creator" content="@sabbbbbir">
+<meta name="twitter:site" content="@expectcuriously">
+<meta name="twitter:creator" content="@expectcuriously">
 <meta name="twitter:title" content="${title}">
 <meta name="twitter:description" content="${ogLine}">
 <meta name="twitter:image" content="${SITE_URL}og.png">
