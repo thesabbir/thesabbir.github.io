@@ -30,10 +30,10 @@ const content = {
   name: "Sabbir Ahmed",
   tagline: "Founder & CEO, Kichu",
   eyebrow: "Technical founder · Dhaka, Bangladesh",
-  headline: "Most of what I build, nobody sees. I like it that&nbsp;way.",
-  intro: `Right now that work is <a class="u" href="${KICHU_URL}">Kichu</a>. Until then it was fifteen years of building alongside other people, starting with freelance jobs I took as a teenager.`,
+  headline: "Every small business deserves what the big ones have. We're building&nbsp;it.",
+  intro: `I'm Sabbir, and I lead <a class="u" href="${KICHU_URL}">Kichu</a>. I've spent fifteen years starting and growing companies with good people, starting with freelance jobs I took as a teenager, and this is the work all of it was preparing me for.`,
   description:
-    "Sabbir Ahmed builds the quiet parts of companies. Founder and CEO of Kichu, a small team in Philadelphia and Dhaka, after fifteen years building alongside others, from freelancing as a teenager to co-founder and CTO.",
+    "Sabbir Ahmed leads Kichu, giving every small business what the big ones have. Fifteen years building companies, from freelancing as a teenager to co-founder and CTO.",
   contactLine:
     "Email is the best way to reach me. I'm glad to hear from anyone who'd like to build Kichu with us or work with it, or who just wants to talk about commerce, AI agents, or whatever they're curious about.",
   links: [
@@ -46,20 +46,20 @@ const content = {
 
   // "Now": the company, in kichu.dev's public terms only.
   now: [
-    "Most small businesses run on a pile of tools that don't talk to each other, held together by an owner who stays up past midnight making the numbers agree. Kichu puts the shop, the orders, the payments, the couriers and the books in one place and lets the software do the chasing, for a fraction of what all those tools cost. We'd like that owner to have their evenings back.",
+    "Most small shops run on a pile of tools that don't talk to each other, held together by an owner who stays up past midnight making the numbers agree. Kichu puts the shop, the orders, the payments, the couriers and the books in one place and lets the software do the chasing, for a fraction of what all those tools cost. We'd like that owner to have their evenings back.",
     "We're headquartered in Philadelphia, and it's live.",
   ],
 
   // "How I work": the founder's edge. Grounded only in known facts.
   method: [
-    "I've had a turn at most of the jobs in a tech company, and each one taught me the same thing. What holds a company up is largely invisible. It's the plain, careful work underneath, and it decides how easily everyone else gets to do theirs.",
-    "So I try to pay attention at two distances at once: to where things are going, and to the small detail that might give way on the way there. I'm still learning to do both well.",
-    "At Kichu, AI agents now write most of the code. That lets a small team do a great deal, and it makes it just as easy to build the wrong thing quickly. So most of our work is the part that hasn't changed: deciding what's worth building, giving the agents clear rules, and writing the tests that catch mistakes before a merchant meets them. Our largest change so far ran to about 30,000 lines across 22 branches, and they caught what the agents got wrong.",
+    "I've had a turn at most of the jobs in a tech company, and each one taught me the same thing: companies rise or fall on their foundations, and the foundations are people as much as code. Get them right early and everyone who comes after moves faster.",
+    "So I keep two things in view at once: where we're going, and the small detail that could trip us on the way. I'm still learning to do both well.",
+    "At Kichu that means a bit of everything. I set the direction, sit with merchants to see how their day really goes, bring the right people in, and still write the rules our AI agents work under. Agents write most of our code now, which lets a small team do a great deal. It also makes it easy to build the wrong thing quickly, so the old questions matter more than ever: what's worth building, and is it right?",
   ],
 
   // "Off the clock": the person, from the founder's own bio. Quiet, not announced.
   offClock:
-    "I'm happiest absorbed in something: a hard problem, a new subject, a pet project that may never ship. I like being around people who care about the same things, and more often than not I end up helping a community form around them. When I can, I'm outside. There's usually indie music on, and I keep a soft spot for pop culture. Mostly, I try to meet things as they are.",
+    "I'm happiest absorbed in something: a hard problem, a new subject, a pet project that may never ship. I love being around people who care about the same things, and more often than not I end up helping a community form around them. When I can, I'm outside. There's usually indie music on, and I keep a soft spot for pop culture. Mostly, I try to meet things as they are.",
 
   // Track record: outcomes, not a logo wall.
   work: [
@@ -124,7 +124,7 @@ const favicon =
   ).replace(/%23/g, "%23");
 
 const title = `${content.name} — ${content.tagline}`;
-const ogLine = "Most of what I build, nobody sees. I like it that way.";
+const ogLine = "Every small business deserves what the big ones have. We're building it.";
 
 const html = `<!doctype html>
 <html lang="en">
