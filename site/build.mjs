@@ -30,12 +30,12 @@ const content = {
   name: "Sabbir Ahmed",
   tagline: "Founder & CEO, Kichu",
   eyebrow: "Technical founder · Dhaka, Bangladesh",
-  headline: "I build the part of a company nobody&nbsp;sees.",
-  intro: `These days, the company is my own. <a class="u" href="${KICHU_URL}">Kichu</a> gives a small business one place to run everything it sells, ships and gets paid for, and I'm building it with two co-founders in Dhaka. Before that I spent fifteen years building mostly other people's startups, beginning with freelance jobs I took as a teenager.`,
+  headline: "Most of what I build, nobody sees. I like it that&nbsp;way.",
+  intro: `Right now that work is <a class="u" href="${KICHU_URL}">Kichu</a>, which a few of us are building in Dhaka so a small business can run everything it sells, ships and gets paid for from one place. Before it came fifteen years of building alongside other people, starting with freelance jobs I took as a teenager.`,
   description:
-    "Sabbir Ahmed builds the part of a company nobody sees. Founder and CEO of Kichu, after fifteen years building startups, from freelancing as a teenager to co-founder and CTO.",
+    "Sabbir Ahmed builds the quiet parts of companies. Founder and CEO of Kichu, a small team in Dhaka, after fifteen years building alongside others, from freelancing as a teenager to co-founder and CTO.",
   contactLine:
-    "Email is the best way to reach me. Write if you'd like to build Kichu with us or work alongside it, or if you just want to compare notes on commerce and AI agents.",
+    "Email is the best way to reach me. I'm glad to hear from anyone who'd like to build Kichu with us or work alongside it, or who just wants to talk about commerce, AI agents, or whatever they're curious about.",
   links: [
     { href: "mailto:sabbirahmed8361@gmail.com", text: "sabbirahmed8361@gmail.com" },
     { href: KICHU_URL, text: "kichu.dev" },
@@ -46,21 +46,20 @@ const content = {
 
   // "Now": the company, in kichu.dev's public terms only.
   now: [
-    "Most small businesses run on a pile of tools that don't talk to each other, held together by an owner who stays up past midnight making the numbers agree. Kichu replaces the pile. The shop, the orders, the payments, the couriers and the books live in one place, and the software does the chasing.",
-    "It costs a fraction of what the pile did, and it's already live.",
+    "Most small businesses run on a pile of tools that don't talk to each other, held together by an owner who stays up past midnight making the numbers agree. Kichu replaces the pile. The shop, the orders, the payments, the couriers and the books live in one place, and the software does the chasing. We'd like that owner to have their evenings back.",
+    "It's live, and it costs a fraction of what the pile did.",
   ],
 
   // "How I work": the founder's edge. Grounded only in known facts.
   method: [
-    "I've done most of the jobs a tech company has. I freelanced as a teenager, then wrote code for other people, led teams, was the first engineer through the door more than once, consulted, and co-founded a company as its CTO. The lesson that stuck isn't a glamorous one: companies stall on their foundations. The parts nobody looks at decide how fast everyone else can move, and they decide it quietly, long before anyone notices.",
-    "Getting that right means holding two things at once. One is the big picture, where the company is actually going. The other is the small detail that will break on the way there. Most people are good at one of them. I've spent fifteen years learning to do both.",
-    "AI hasn't changed this. It has made it more urgent. At Kichu, AI agents write most of the code, which means a small team can build what used to take a big one. It also means a bad idea can be built in an afternoon. So our job is the old job: deciding what's worth building, and making sure it's right. We write the rules the agents work under, and the tests that catch their mistakes before a merchant does.",
-    "The largest single change so far ran to about 30,000 lines across 22 branches. The tests caught what the agents got wrong, and it shipped.",
+    "Over fifteen years I've had a turn at most of the jobs in a tech company: freelancer, engineer, team lead, early hire, consultant, co-founder and CTO. Each taught me something, and most of it came down to one thing. What holds a company up is largely invisible. It's the plain, careful work underneath, and it decides how easily everyone else gets to do theirs.",
+    "So I try to pay attention at two distances at once: to where things are going, and to the small detail that might give way on the way there. I'm still learning to do both well.",
+    "At Kichu, AI agents now write most of the code. That lets a small team do a great deal, and it makes it just as easy to build the wrong thing quickly. So most of our work is the part that hasn't changed: deciding what's worth building, giving the agents clear rules, and writing the tests that catch mistakes before a merchant meets them. Our largest change so far ran to about 30,000 lines across 22 branches, and the tests caught what the agents got wrong.",
   ],
 
-  // "Off the clock": the person, from the founder's own bio.
+  // "Off the clock": the person, from the founder's own bio. Quiet, not announced.
   offClock:
-    "Give me a free afternoon and I'll go looking for a hard problem. Usually that means whatever I'm learning that month, or one of the pet projects that may never ship, and I'd rather take something apart properly than guess at how it works. I tend to end up building a community around whatever I care about. When I can, I'm outdoors. There's usually indie music playing, and I know more about pop culture than a founder strictly needs to.",
+    "I'm happiest when I'm giving something my full attention: a hard problem, a new subject, a pet project that may never ship. I like being around people who care about the same things, and more often than not I end up helping a community form around them. When I can, I'm outside. There's usually indie music on, and I keep a soft spot for pop culture. Mostly, I try to meet things as they are.",
 
   // Track record: outcomes, not a logo wall.
   work: [
@@ -68,29 +67,29 @@ const content = {
       org: "Cefalo",
       role: "Staff engineer, consulting for Norwegian SaaS companies",
       when: "2023 — 2026",
-      note: "A subscription platform I worked on went from one customer and about 2,000 users to more than 300,000 users across 10–15 businesses. I built growth features for it and made the scaling calls that kept it quick. I also mentored two engineers, and other consultants brought me their hard design problems.",
+      note: "I worked with a subscription platform as it grew from one customer and about 2,000 users to more than 300,000 across 10–15 businesses, mostly on growth features and the scaling decisions along the way. I also mentored two engineers and helped other consultants think through hard design problems.",
     },
     {
       org: "Ngaze",
       role: "Co-founder & CTO",
       when: "2023",
-      note: "A platform that teaches STEM through games and physics simulations. I owned the technology, the strategy and the hiring, and took it from an idea to a live product with two partners. I also built a tool that let people with no coding background write interactive lessons with an LLM, back when that was still unusual.",
+      note: "We set out to teach STEM through games and physics simulations. I looked after the technology, the strategy and hiring, and together we took it from an idea to a live product with two partners. One thing I'm glad we built early: a tool that let people with no coding background write interactive lessons with an LLM.",
     },
     {
       org: "Fasset",
       role: "Early engineer",
       when: "2021 — 2023",
-      note: "I joined this regulated crypto exchange when its infrastructure was struggling. I cut what the core services cost to run in half, shipped its peer-to-peer launch, and laid the groundwork it later scaled on. It now serves millions of users.",
+      note: "I joined this regulated crypto exchange while its infrastructure was having a hard time. The team and I halved what the core services cost to run, shipped the peer-to-peer launch, and laid groundwork it later grew on. It now serves millions of users.",
     },
     {
       org: "Cookups",
       role: "Founding engineer",
       when: "2017 — 2019",
-      note: "A marketplace for home cooks. I built the customer app for web, iOS and Android from one codebase, plus the back office the business ran on. I hired and led four engineers, and saw it through to its acquisition by Chaldal.",
+      note: "A marketplace for home cooks. I built the apps for web, iOS and Android from one codebase and the back office the business ran on, then hired four engineers who carried it with me to its acquisition by Chaldal.",
     },
   ],
   earlier:
-    "Before that: Shohoz, where I brought food delivery to the web and launched truck rental; BAIA Group, tracing supply chains over 2G connections; and East West Media Group, where I led six engineers building real-time video calls in the browser.",
+    "Before that: Shohoz, where I helped bring food delivery to the web and launch truck rental; BAIA Group, tracing supply chains over 2G connections; and East West Media Group, where I led a team of six building real-time video calls in the browser.",
 };
 
 /* ---------------------------------------------------------------------------- */
@@ -125,7 +124,7 @@ const favicon =
   ).replace(/%23/g, "%23");
 
 const title = `${content.name} — ${content.tagline}`;
-const ogLine = "I build the part of a company nobody sees.";
+const ogLine = "Most of what I build, nobody sees. I like it that way.";
 
 const html = `<!doctype html>
 <html lang="en">
